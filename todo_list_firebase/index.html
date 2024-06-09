@@ -1,0 +1,145 @@
+<htm>
+
+    <head>
+
+        <title>ToDo Application</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App With Vanilla JS</title>
+    <!-- css -->
+    <link rel="stylesheet" href="index.css">
+    <!-- bootstrap links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- fontAweosum -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- googleFonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
+    </head>
+
+        
+
+    <body onload="loadbody()">
+        <!--Date and Time Section-->
+        <div class="addContainer">
+            <h3>Welcome, <span>User</span></h3>
+            <h5>Lots of work to be done, lets make a list!</h5>
+            <div class="date-time">
+                <span id="date">Date</span>
+                <span id="month">Month</span>
+                <span id="weekday">Weekday</span>
+                <span id="year">Year</span>
+            </div><br>
+            <button type="button" class="btn btn-primary btm-sbm" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i>Sign Up
+            </button> <!--Opens the modal window(Modals are large UI elementss that sit on top of an application main window)-->
+
+            <a class="btn btn secondary btn-sm" href="login.html">
+                <i class="fas fa-sign-in-alt"></i>Login
+            </a>
+
+        
+        </div><br>
+
+
+        <!--ToDo Form-->
+
+        <div class="container">
+            <form autocomplete="off" class="form-group" id="form"><!--Form group adds structure to forms. 
+                Its prupose it to pair form controls with a legend or label and to provide help text and invalid/valid feedback, text as well as visual(colour)state feedback-->
+                <input type="text" class="form-control" id="todos"><br>
+                <button type="submit" class="btn btn-success btn-block">Add</button>
+            </form><br>
+            <div class="error">You dont have access to this application, plz regisster your account</div>
+        </div>
+
+
+
+
+
+        <!--Modal--> <!--This is a pop up box at the top of the page-->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div classs="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Register - Modal Title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form autocomplete="off" class="form-group" id="signup-form">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" id="name" required><br>
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" id="email" required><br>
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" id="password" required minlength="6"><br>
+                            <button type="submit" class="btn btn-primary">REGISTER</button>
+                        </form>
+                    </div>
+                    <div class="container error" id="signupError"></div>
+                    <div class="container-error" id="signupError2"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+            <!--bootstrap scripts-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+         <!-- TODO: Add SDKs for Firebase products that you want to use -->
+         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+       
+
+            
+            
+        <script>
+            const firebaseConfig = {
+                apiKey: "AIzaSyBRR73s89zuycxXXKTbE4qqJQ8ymXGZIXk",
+                authDomain: "todo-js-4c601.firebaseapp.com",
+                projectId: "todo-js-4c601",
+                storageBucket: "todo-js-4c601.appspot.com",
+                messagingSenderId: "628817234275",
+                appId: "1:628817234275:web:22e86a354eb6aa3c646b56"
+                };
+                firebase.initializeApp(firebaseConfig);
+
+                const auth = firebase.auth();
+                const db = firebase.firestore();
+        
+          
+        </script>
+
+        <script src="app.js"></script>
+
+        
+     
+           
+
+
+    </body>
+
+
+
+
+</htm>

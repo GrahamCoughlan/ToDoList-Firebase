@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <!-- css -->
+    <link rel="stylesheet" href="index.css">
+    <!-- bootstrap links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- fontAweosum -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- googleFonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
+
+</head>
+<body onload="loadbody();">
+    <!--The date and time section-->
+    <div class="addContainer">
+        <h3>Welcome, <span id="username"></span></h3>
+        <h5>Lots of Work to do, Lets make a list</h5>
+        <div class="date-time">
+            <span id="date">Date</span>
+            <span id="month">Month</span>
+            <span id="year">Year</span>
+            <span id="weekday">Weekday</span>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="logout()">LOGOUT</button>
+    </div>
+
+    <!--todo form-->
+
+    <div class="container">
+        <form autocomplete="off" class="form-group" id="form">
+            <input type="text" class="form-control" id="todos" required>
+            <button type="submit" class="btn btn-success btn-block">ADD</button>
+        </form>
+    </div>
+
+    <!--todos container for retrieved -->
+    <div class="container todo-container" id="todo-container">
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+  
+
+       
+       
+   <script>
+       const firebaseConfig = {
+           apiKey: "AIzaSyBRR73s89zuycxXXKTbE4qqJQ8ymXGZIXk",
+           authDomain: "todo-js-4c601.firebaseapp.com",
+           projectId: "todo-js-4c601",
+           storageBucket: "todo-js-4c601.appspot.com",
+           messagingSenderId: "628817234275",
+           appId: "1:628817234275:web:22e86a354eb6aa3c646b56"
+           };
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    
+   
+     
+   </script>
+
+
+    <script src="users.js"></script>
+   
+</body>
+</html>
